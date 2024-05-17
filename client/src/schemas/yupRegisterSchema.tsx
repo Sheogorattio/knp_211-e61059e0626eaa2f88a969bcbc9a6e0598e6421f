@@ -4,7 +4,9 @@ const MIN = 5;
 const MAX = 10;
 const PASS_VALUE = 8;
 const yupRegisterSchema = yup.object({
-  name: yup.string().required("Введіть ім'я"),
+  name: yup.string().matches(/^([A-Za-zА-Яа-я\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
+        'Некоретне значення'
+    ).required("Введіть ім'я"),
   login: yup
     .string()
     .min(MIN, `Логін менше ${MIN} символів`)
